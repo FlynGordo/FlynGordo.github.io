@@ -1,7 +1,5 @@
 let Carrito = [["precio", "item"]]
 
-
-
 function anadirHm() {
   Carrito.push([6000, "Hamburguesa"])
   recargarPag()
@@ -17,9 +15,9 @@ function anadirAr() {
   recargarPag()
 }
 
+
 function recargarPag() {
   event.preventDefault();
-
   try {
     document.getElementById("Cuenta").outerHTML = "";
     //let body = document.getElementsByTagName("body")[0];
