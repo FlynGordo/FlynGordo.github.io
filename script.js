@@ -1,4 +1,6 @@
 let Carrito = [["precio", "item"]]
+let Time2pay = true
+
 
 function anadirHm() {
   Carrito.push([6000, "Hamburguesa"])
@@ -27,16 +29,25 @@ function recargarPag() {
   genera_tabla()
 }
 
+function pagar(){
+  alert("se ah pagado completamente")
+  Carrito = [["precio", "item"]];
+  Time2pay = true
+   document.getElementById("Paga").outerHTML = "";
+  recargarPag()
+}
+
 
 //generar tabla
 function genera_tabla() {
   // Obtener la referencia del elemento body
+  
   var body = document.getElementsByTagName("body")[0];
 
   // Crea un elemento <table> y un elemento <tbody>
   var tabla = document.createElement("table");
   var tblBody = document.createElement("tbody");
-
+  let num = 0;
   // Crea las celdas
   for (var i = 0; i < Carrito.length; i++) {
     // Crea las hileras de la tabla
@@ -61,8 +72,20 @@ function genera_tabla() {
   // appends <table> into <body>
   body.appendChild(tabla);
   // modifica el atributo "border" de la tabla y lo fija a "2";
+  
+  
   tabla.setAttribute("border", "2");
   tabla.setAttribute("id", "Cuenta");
+
+  if(Time2pay && Carrito.length > 1){
+    button = document.createElement("Button");
+  body.appendChild(button);
+  button.setAttribute("class","Pagar")
+    button.setAttribute("id","Paga")
+  button.setAttribute("onclick","pagar()")
+  button.innerText = 'Haz Click para Pagar';
+    Time2pay = false
+  }
 }
 
 
